@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Level 3 - Web Dev Mini-Quest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+        background-image: url(level2bg.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+      }
+
+      .card, .btn, .badge {
+        border-radius: 15px !important;
+      }
+
+      .btn {
+        transition: transform 0.2s ease;
+      }
+
+      .btn:hover:not(:disabled) {
+        transform: scale(1.02);
+      }
+    </style>
+  </head>
+  <body class="bg-dark font-monospace text-uppercase">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+          
+          <div class="card bg-black border border-white border-4 rounded-0">
+            <div class="card-body p-4 text-white">
+              
+              <div class="d-flex gap-2 mb-3">
+                <span id="level-display" class="badge bg-primary text-black rounded-0">LVL. 01</span>
+                <span id="rank-display" class="badge bg-danger text-white rounded-0">SQUIRE</span>
+              </div>
+              
+              <h1 class="h3 fw-bold mb-3 mt-1">WEB DEV MINI-QUEST</h1>
+              
+              <hr class="border-white border-2 opacity-100 mb-4">
+
+              <p class="small mb-4">
+                > Choose a Rank <br>
+                > for shortcut (I'ts cheating btw)
+              </p>
+
+              <button id="lvl-up-btn" class="btn btn-info border-3 border-light rounded-0 w-100 mb-3 fw-bold">
+                LEVEL_UP
+              </button>
+
+              <div class="d-flex gap-3">
+                <a class="btn btn-warning border-3 border-light rounded-0 w-50 fw-bold" href="level2.html">BACK</a>
+                <a class="btn btn-success border-3 border-light rounded-0 w-50 fw-bold" href="level4.html">NEXT_LVL</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentLvl = 1;
+      const maxLvl = 6;
+      const rankings = ["Squire", "Knight", "Knight Officer", "Marshal", "Seneschal", "Grand Master"];
+
+      const lvlBtn = document.getElementById('lvl-up-btn');
+      const lvlText = document.getElementById('level-display');
+      const rankText = document.getElementById('rank-display');
+
+      lvlBtn.addEventListener('click', () => {
+        if (currentLvl < maxLvl) {
+          currentLvl++;
+          
+          lvlText.innerText = `LVL. 0${currentLvl}`;
+          
+          rankText.innerText = rankings[currentLvl - 1].toUpperCase();
+
+          if (currentLvl === maxLvl) {
+            lvlBtn.innerText = "MAX LEVEL REACHED";
+            lvlBtn.classList.replace('btn-info', 'btn-secondary');
+            lvlBtn.disabled = true;
+          }
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
